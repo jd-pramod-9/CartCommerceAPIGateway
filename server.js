@@ -15,7 +15,7 @@ var corsOptions = function(req, callback) {
     }
 }
 
-app.options('*', cors());
+app.use('*', cors(corsOptions));
 
 
 const headerAuth = {
