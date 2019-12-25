@@ -29,7 +29,10 @@ const apiExecuter = function(url, auth){
     return axios.get(url, {headers:auth});
 }
 
-app.get('/product', (req, res)=>{
+const apiSuffix = "/api";
+const kartAPISuffix = "/flipkart";
+
+app.get(apiSuffix + kartAPISuffix + '/product', (req, res)=>{
     const apiPromise = apiExecuter(apiUrls.productFeedList, headerAuth);
     apiPromise.then(function(result){
         res.send(result.data);
@@ -39,7 +42,7 @@ app.get('/product', (req, res)=>{
     
 });
 
-app.get('/booksCategory', (req, res)=>{
+app.get(apiSuffix + kartAPISuffix + '/booksCategory', (req, res)=>{
     const apiPromise = apiExecuter(apiUrls.booksCategoryFeed, headerAuth);
     apiPromise.then(function(result){
         res.send(result.data);
@@ -48,7 +51,7 @@ app.get('/booksCategory', (req, res)=>{
     });
 });
 
-app.get('/searchByKeyword', (req, res)=>{
+app.get(apiSuffix + kartAPISuffix + '/searchByKeyword', (req, res)=>{
     const url = apiUrls.searchByKeyword + "?query="+req.query.query+"&resultCount="+req.query.count;
     const apiPromise = apiExecuter(url, headerAuth);
     apiPromise.then(function(result){
@@ -58,7 +61,7 @@ app.get('/searchByKeyword', (req, res)=>{
     });
 });
 
-app.get('/searchById', (req, res)=>{
+app.get(apiSuffix + kartAPISuffix + '/searchById', (req, res)=>{
     const url = apiUrls.searchById + "?id="+req.query.id;
     const apiPromise = apiExecuter(url, headerAuth);
     apiPromise.then(function(result){
@@ -68,7 +71,7 @@ app.get('/searchById', (req, res)=>{
     });
 });
 
-app.get('/feeds', (req, res)=>{
+app.get(apiSuffix + kartAPISuffix + '/feeds', (req, res)=>{
     const apiPromise = apiExecuter(apiUrls.feedDownloadList, headerAuth);
     apiPromise.then(function(result){
         res.send(result.data);
@@ -77,7 +80,7 @@ app.get('/feeds', (req, res)=>{
     });
 });
 
-app.get('/allOffers', (req, res)=>{
+app.get(apiSuffix + kartAPISuffix + '/allOffers', (req, res)=>{
     const apiPromise = apiExecuter(apiUrls.allOffer, headerAuth);
     apiPromise.then(function(result){
         res.send(result.data);
@@ -86,7 +89,7 @@ app.get('/allOffers', (req, res)=>{
     });
 });
 
-app.get('/dealsOfTheDay', (req, res)=>{
+app.get(apiSuffix + kartAPISuffix + '/dealsOfTheDay', (req, res)=>{
     const apiPromise = apiExecuter(apiUrls.dealsOfTheDay, headerAuth);
     apiPromise.then(function(result){
         res.send(result.data);
@@ -95,7 +98,7 @@ app.get('/dealsOfTheDay', (req, res)=>{
     });
 });
 
-app.get('/orderReport', (req, res)=>{
+app.get(apiSuffix + kartAPISuffix + '/orderReport', (req, res)=>{
     const url = apiUrls.orderReport+"?startDate="+req.query.startDate+"&endDate="+req.query.endDate+"&status="+req.query.status+"&offset="+req.query.offset;
     const apiPromise = apiExecuter(url, headerAuth);
     apiPromise.then(function(result){
@@ -105,7 +108,7 @@ app.get('/orderReport', (req, res)=>{
     });
 });
 
-app.get('/appInstallReport', (req, res)=>{
+app.get(apiSuffix + kartAPISuffix + '/appInstallReport', (req, res)=>{
     const url = apiUrls.appInstallReport + "?startDate="+req.query.startDate+"&endDate="+req.query.endDate+"&status="+req.query.status;
     const apiPromise = apiExecuter(url, headerAuth);
     apiPromise.then(function(result){
